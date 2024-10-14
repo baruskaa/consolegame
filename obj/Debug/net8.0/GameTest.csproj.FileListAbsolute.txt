@@ -1,0 +1,14 @@
+C:\Users\Ska\source\repos\GameTest\GameTest\bin\Debug\net8.0\GameTest.exe
+C:\Users\Ska\source\repos\GameTest\GameTest\bin\Debug\net8.0\GameTest.deps.json
+C:\Users\Ska\source\repos\GameTest\GameTest\bin\Debug\net8.0\GameTest.runtimeconfig.json
+C:\Users\Ska\source\repos\GameTest\GameTest\bin\Debug\net8.0\GameTest.dll
+C:\Users\Ska\source\repos\GameTest\GameTest\bin\Debug\net8.0\GameTest.pdb
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.AssemblyInfoInputs.cache
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.AssemblyInfo.cs
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.csproj.CoreCompileInputs.cache
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.dll
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\refint\GameTest.dll
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.pdb
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\GameTest.genruntimeconfig.cache
+C:\Users\Ska\source\repos\GameTest\GameTest\obj\Debug\net8.0\ref\GameTest.dll
