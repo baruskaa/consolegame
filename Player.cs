@@ -14,7 +14,7 @@ namespace GameTest
         public int damage = 1;
         public int weaponValue = 1;
         public int amuletValue = 0;
-        public int potionCount = 1;
+        public int potionCount = 0;
 
         public void resetAttributes()
         {
