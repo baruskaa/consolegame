@@ -15,11 +15,86 @@ namespace GameTest
         //Encounter
         public static void encounterLouise()
         {
-            //louise screaming-battle scene
-            Console.WriteLine("INSERT NARRATION NI LOUISE");
+            Console.WriteLine();
+            Program.centerPara("It's just another day in the woods. The same familiar scent of");
+            Program.centerPara("oak and the sound of your axe splitting through the wood.");
+            Console.WriteLine();
+            Program.centerPara("You pause for a moment, taking in the peaceful atmosphere.");
+            Console.WriteLine();
+            Program.centerPara("Everything seems normal. >>>");
             Console.ReadKey();
-            combat(false, "The Dark Creature", 1, 4);
-            Console.WriteLine("INSERT NARRATION NI LOUISE -CONTEXT GIVING + looted enemy and given new sword");
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("Suddenly, a high-pitched scream echoes through the trees,");
+            Program.centerPara("cutting through the peaceful atmosphere like a knife. >>>");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("╔════════════════════════════════════════════════════════════╗");
+            Program.centerPara("║                                                            ║");
+            Program.centerPara("║  ???: AAAAAAHHHHHH!!!!!!                                   ║");
+            Program.centerPara("║                                                            ║");
+            Program.centerPara("╚════════════════════════════════════════════════════════════╝");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("You freeze, gripping your axe tighter.");
+            Console.WriteLine();
+            Program.centerPara("That scream… It’s coming from deeper in the forest.");
+            Console.WriteLine();
+            Program.centerPara("It’s desperate, terrified.");
+            Console.WriteLine();
+            Program.centerPara("Someone’s in trouble. >>>");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("╔════════════════════════════════════════════════════════════╗");
+            Program.centerPara("║                                                            ║");
+            Program.centerPara("║  ???: HELP!!! PLEASE, SOMEONE!!!!                          ║");
+            Program.centerPara("║                                                            ║");
+            Program.centerPara("╚════════════════════════════════════════════════════════════╝");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("As you approach the area, you see her——a woman sprinting as fast");
+            Program.centerPara("as her legs can carry her, a terrified expression on her face.");
+            Console.WriteLine();
+            Program.centerPara("And behind her... >>>");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("A gigantic beast, twisted and inhumane, is drawing near upon her.");
+            Program.centerPara("Its massive claws cutting through the underbrush. She’s moments");
+            Program.centerPara("away from being caught. >>>");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine();
+            Program.centerPara("You have no weapon but your axe—an ordinary woodcutter’s tool.");
+            Console.WriteLine();
+            Program.centerPara("But it’s enough.");
+            Console.WriteLine();
+            Program.centerPara("It has to be. >>>");
+            Console.ReadKey();
+            Console.Clear();
+
+            combat(false, "Monstrous Beast", 2, 4);
+
+            Console.WriteLine();
+            Program.centerPara("As you approach the area, you see her——a woman sprinting as fast");
+            Program.centerPara("as her legs can carry her, a terrified expression on her face.");
+            Console.WriteLine();
+            Program.centerPara("And behind her... >>>");
+            Console.ReadKey();
+            Console.Clear();
+
+
             recieveAmulet("Coolest Amulet");
             recieveWeapon("Coolest Sword");
 
@@ -33,6 +108,10 @@ namespace GameTest
             String enemyName = "";
             int enemyPower = 0;
             int enemyHealth = 0;
+
+            int totalEnergy = Program.player1.energy;
+            int totalAttack = rand.Next(0, Program.player1.weaponValue);
+
             if (random){}
             else
             {
@@ -43,98 +122,134 @@ namespace GameTest
 
             while (enemyHealth > 0)
             {
+                Console.WriteLine();
+                Program.centerPara("ENEMY NAME: " + enemyName);
+                Program.centerPara("ENEMY POWER: " + enemyPower);
+                Program.centerPara("ENEMY HEALTH: " + enemyHealth);
+                Console.WriteLine();
 
-                Console.WriteLine("\nENEMY NAME: " + enemyName + "\nENEMY POWER: " + enemyPower + "\nENEMY HEALTH: " + enemyHealth + "\n");
-
-                Console.WriteLine("*============================*");
-                Console.WriteLine("|| (1) Attack    (2) Defend ||");
-                Console.WriteLine("|| (3) Run       (4) Heal   ||");
-                Console.WriteLine("*============================*");
-                Console.WriteLine("POTIONS: " + Program.player1.potionCount + "\nHEALTH: " + Program.player1.health + "\n");
+                Program.centerPara("oo=============================oo");
+                Program.centerPara("||    (A)ttack     (D)efend    ||");
+                Program.centerPara("||    (R)un        (H)eal      ||");
+                Program.centerPara("oo=============================oo");
+                Console.WriteLine();
+                Program.centerPara("HEALTH: " + Program.player1.health);
+                Program.centerPara("ENERGY: " + totalEnergy);
+                Program.centerPara("POTIONS: " + Program.player1.potionCount);
+                Console.WriteLine("\n");
                 try
                 {
-                    int input = Convert.ToInt32(Console.ReadLine());
-                    int damage, attack;
+                    if (totalEnergy <= 0)
+                    {
+                        Program.centerPara("You ran out of energy to fight. Your attacks will deal less damage now.");
+                        totalAttack -= 2;
+                        if (totalAttack < 0) { totalAttack = 0; }
+                        Console.WriteLine();
+                    }
+
+                    string input = Program.centerInput("What would you do?");
+                    Console.WriteLine();
+                    int damage = enemyPower - Program.player1.amuletValue;
+                    int energy, attack;
+                    
+                    
 
                     switch (input)
                     {
-                        case 1:
+                        case "A":
                             //atk
-
-                            damage = enemyPower - Program.player1.amuletValue;
                             if (damage < 0) { damage = 0; }
-                            attack = rand.Next(0, Program.player1.weaponValue) + rand.Next(1, 4);
+                            attack = totalAttack + rand.Next(1, 4);
+                            energy = 2;
 
-                            Console.WriteLine("you attacked " + enemyName + ". you lose " + damage + " health and deal " + attack + "damage.");
+                            Program.centerPara("You attacked " + enemyName + ".");
+                            Program.centerPara("You lose " + damage + " health, " + energy + " energy, and deal " + attack + " damage.");
 
                             Program.player1.health -= damage;
                             enemyHealth -= attack;
+                            totalEnergy -= energy;
+                            if (totalEnergy < 0) { totalEnergy = 0; }
 
                             break;
 
-                        case 2:
+                        case "D":
 
                             //def
 
                             damage = (enemyPower / 4) - Program.player1.amuletValue;
                             if (damage < 0) { damage = 0; }
-                            attack = rand.Next(0, Program.player1.weaponValue) / 2;
+                            attack = totalAttack / 2;
+                            energy = 1;
 
-                            Console.WriteLine("you defended yourself from " + enemyName + ". you lose " + damage + " health and deal " + attack + "damage.");
+                            Program.centerPara(enemyName + " attacked you, but you managed to defend yourself.");
+                            Program.centerPara("You lose " + damage + " health, " + energy + " energy, and deal " + attack + " damage.");
 
                             Program.player1.health -= damage;
                             enemyHealth -= attack;
-
+                            totalEnergy -= energy;
+                            if (totalEnergy < 0) { totalEnergy = 0; }
 
                             break;
 
-                        case 3:
+                        case "R":
 
                             //run
                             if (rand.Next(0, 2) == 0)
                             {
-                                //fail 
-                                damage = enemyPower - Program.player1.amuletValue;
+                                //fail, take damage 
                                 if (damage < 0) { damage = 0; }
-                                Console.WriteLine(" you lose " + damage + "as you failed to escape " + enemyName);
+                                energy = 1;
+                                Program.centerPara(enemyName + " catches up and attacks you.");
+                                Program.centerPara("You lose " + damage + " health and " + energy + " energy");
                                 Program.player1.health -= damage;
-
+                                totalEnergy -= energy;
+                                if (totalEnergy < 0) { totalEnergy = 0; }
                             }
                             else
                             {
-                                //success 
-                                damage = enemyPower - Program.player1.amuletValue;
+                                //success , add energy
+                                energy = 1;
                                 if (damage < 0) { damage = 0; }
-                                Console.WriteLine("You managed to escape " + enemyName + ".");
+                                Program.centerPara("You managed to escape " + enemyName + ". You take a few breaths to regain some energy.");
+                                totalEnergy += energy;
+                                if (totalEnergy < 0) { totalEnergy = 0; }
                             }
 
                             break;
 
-                        case 4:
+                        case "H":
 
                             //heal
-
                             if (Program.player1.potionCount == 0)
                             {
-                                //no potion, take damage
-                                damage = enemyPower - Program.player1.amuletValue;
+                                // No potion, take damage
                                 if (damage < 0) { damage = 0; }
-                                Console.WriteLine("you don't have any potions. " + enemyName + " strikes you and you lose " + damage + " health.");
+                                Program.centerPara("You don't have any potions.");
+                                Program.centerPara("While you were looking for a potion, " + enemyName + " strikes you");
+                                Program.centerPara("and you lose " + damage + " health.");
                                 Program.player1.health -= damage;
                             }
                             else
                             {
-                                //drink potion, add health
+                                // Drink potion, add health
                                 int potionValue = 2;
-                                Console.WriteLine("You drink a potion and gain " + potionValue + " health");
-                                Program.player1.health += potionValue;
+                                energy = 3;
 
+                                Program.centerPara("You drink a potion and gain " + energy + " energy and " + potionValue + " health.");
+                                Program.player1.health += potionValue;
+                                totalEnergy += energy;
+
+                                // Decrease potion count
+                                Program.player1.potionCount--;
+
+                                // Ensure total energy is not negative
+                                if (totalEnergy < 0) { totalEnergy = 0; }
                             }
 
                             break;
 
                         default:
-                            Console.WriteLine("INVALID INPUT!");
+                            Program.centerPara("INVALID INPUT");
                             break;
 
 
@@ -147,76 +262,79 @@ namespace GameTest
                             try
                             {
                                 Console.Clear();
-                                Console.WriteLine("YOU DIED");
-                                Console.WriteLine("☠☠☠☠☠");
-                                Console.Write("Do you wish to restart the game? [Y or N]: ");
-                                String ans = Console.ReadLine();
+                                Program.centerPara("YOU DIED");
+                                Program.centerPara("☠☠☠☠☠");
+                                String ans = Program.centerInput("Do you wish to restart the game? [Y or N]: ");
                                 if (ans.ToUpper() == "Y")
                                 {
-
                                     Console.Clear();
                                     Program.player1.resetAttributes();  
-                                    Program.Start();
+                                    Program.start();
                                 }
                                 else if (ans.ToUpper() == "N")
                                 {
-                                    Console.WriteLine("\nThank You For Playing.\n");
+                                    Console.WriteLine();
+                                    Program.centerPara("Thank You For Playing.");
+                                    Console.WriteLine();
                                     Environment.Exit(0);
                                 }
                                 else
                                 {
-                                    Console.WriteLine("INVALID INPUT");
+                                    Program.centerPara("INVALID INPUT");
                                     Console.Clear();
                                 }
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("INVALID INPUT");
+                                Program.centerPara("INVALID INPUT");
                             }
                         }
                     }
-                } catch(Exception e) {Console.WriteLine("INVALID INPUT!"); }
+                } catch(Exception e) {Program.centerPara("INVALID INPUT"); }
 
                 Console.ReadKey();
                 Console.Clear();
-
-                Console.WriteLine("You have successfully beaten " + enemyName + "!");
             }
+
+            Console.WriteLine("\n");
+            Program.centerPara("You have successfully beaten " + enemyName + "!");
+            Console.ReadKey();
+            Console.Clear();
         }
 
 
         public static void recieveWeapon(String weaponName)
         {
-            Console.WriteLine("\nITEM AQUIRED: " + weaponName);
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("| Damage: " + Program.player1.weaponValue + "                       |");
-            Console.WriteLine("-----------------------------------");
+            Program.centerPara("\nITEM AQUIRED: " + weaponName);
+            Program.centerPara("-----------------------------------");
+            Program.centerPara("| Damage: " + Program.player1.weaponValue + "                       |");
+            Program.centerPara("-----------------------------------");
         }
 
         public static void recieveAmulet(String amuletName)
         {
-            Console.WriteLine("\nITEM AQUIRED: " + amuletName);
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("| Defense: " + Program.player1.amuletValue + "                      |");
-            Console.WriteLine("-----------------------------------");
+            Program.centerPara("\nITEM AQUIRED: " + amuletName);
+            Program.centerPara("-----------------------------------");
+            Program.centerPara("| Defense: " + Program.player1.amuletValue + "                      |");
+            Program.centerPara("-----------------------------------");
         }
 
-        public static void upgradeWeapon(String weaponName)
+        public static void upgradeWeapon(String weaponName)         
         {
             Program.player1.weaponValue += 2;
-            Console.WriteLine("\nWEAPON UPGRADED: " + weaponName);
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("| Damage: " + Program.player1.weaponValue + "                       |");
-            Console.WriteLine("-----------------------------------");
+            Program.centerPara("\nWEAPON UPGRADED: " + weaponName);
+            Program.centerPara("-----------------------------------");
+            Program.centerPara("| Damage: " + Program.player1.weaponValue + "                       |");
+            Program.centerPara("-----------------------------------");
         }
 
         public static void upgradeAmulet(String amuletName)
         {
             Program.player1.amuletValue += 2;
-            Console.WriteLine("\nAMULET UPGRADED: " + amuletName);
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("| Defense: " + Program.player1.amuletValue + "                      |");
-            Console.WriteLine("-----------------------------------");
+            Program.centerPara("\nAMULET UPGRADED: " + amuletName);
+            Program.centerPara("-----------------------------------");
+            Program.centerPara("| Defense: " + Program.player1.amuletValue + "                      |");
+            Program.centerPara("-----------------------------------");
         }
 
 
